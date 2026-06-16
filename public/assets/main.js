@@ -1,56 +1,62 @@
-// Mobile menu
-const menuBtn=document.querySelector('.menu-btn');
-const mobileMenu=document.querySelector('.mobile-menu');
-if(menuBtn&&mobileMenu){menuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('open'))}
+// === Burger ===
+const burger = document.querySelector('.nav__burger');
+const links = document.querySelector('.nav__links');
+burger?.addEventListener('click', () => links?.classList.toggle('open'));
+document.querySelectorAll('.nav__links a').forEach(a =>
+  a.addEventListener('click', () => links?.classList.remove('open'))
+);
 
-// Scroll progress + back to top
-const bar=document.querySelector('.scroll-progress__bar');
-const toTop=document.querySelector('.to-top');
-function onScroll(){
-  const h=document.documentElement;
-  const sc=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
-  if(bar)bar.style.width=sc+'%';
-  if(toTop)toTop.classList.toggle('show',h.scrollTop>400);
+// === Reveal on scroll ===
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// === Scroll progress ===
+const sp = document.querySelector('.scroll-progress');
+if (sp) {
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    sp.style.width = pct + '%';
+  }, { passive: true });
 }
-document.addEventListener('scroll',onScroll,{passive:true});
-if(toTop)toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-// Reveal on scroll
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
-},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-// Mark active nav link
-const path=location.pathname.split('/').pop()||'index.html';
-document.querySelectorAll('.nav__links a, .mobile-menu a').forEach(a=>{
-  const href=a.getAttribute('href');
-  if(href===path)a.classList.add('active');
+// === WhatsApp form ===
+const form = document.querySelector('form[data-wa]');
+form?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const fd = new FormData(form);
+  const name = fd.get('name') || '';
+  const phone = fd.get('phone') || '';
+  const service = fd.get('service') || '';
+  const area = fd.get('area') || '';
+  const note = fd.get('note') || '';
+  const msg =
+`السلام عليكم، طلب جديد من الموقع:
+الاسم: ${name}
+الهاتف: ${phone}
+الخدمة: ${service}
+المنطقة: ${area}
+التفاصيل: ${note}`;
+  window.open(`https://wa.me/96565954080?text=${encodeURIComponent(msg)}`, '_blank');
 });
 
-// Counters
-const counters=document.querySelectorAll('[data-count]');
-const cio=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting)return;
-    const el=e.target;cio.unobserve(el);
-    const target=parseInt(el.dataset.count,10);const dur=1400;const start=performance.now();
-    const suf=el.dataset.suffix||'';
-    function step(t){const p=Math.min((t-start)/dur,1);const val=Math.floor(target*(1-Math.pow(1-p,3)));el.textContent=val.toLocaleString('ar-EG')+suf;if(p<1)requestAnimationFrame(step)}
-    requestAnimationFrame(step);
+// === Counter (data-count) ===
+const ci = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = +el.dataset.count;
+    const dur = 1400;
+    const start = performance.now();
+    const tick = (t) => {
+      const p = Math.min(1, (t - start) / dur);
+      el.textContent = Math.floor(target * (1 - Math.pow(1 - p, 3))).toLocaleString('ar-EG');
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    ci.unobserve(el);
   });
-},{threshold:.3});
-counters.forEach(c=>cio.observe(c));
-
-// Contact form
-const form=document.querySelector('#contact-form');
-if(form){form.addEventListener('submit',e=>{
-  e.preventDefault();
-  const data=new FormData(form);
-  const name=encodeURIComponent(data.get('name')||'');
-  const service=encodeURIComponent(data.get('service')||'');
-  const area=encodeURIComponent(data.get('area')||'');
-  const msg=encodeURIComponent(data.get('message')||'');
-  const text=`السلام عليكم، الاسم: ${decodeURIComponent(name)}%0Aالخدمة: ${decodeURIComponent(service)}%0Aالمنطقة: ${decodeURIComponent(area)}%0Aالرسالة: ${decodeURIComponent(msg)}`;
-  window.location.href=`https://wa.me/96565954080?text=${text}`;
-})}
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => ci.observe(el));
