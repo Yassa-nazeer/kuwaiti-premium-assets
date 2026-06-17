@@ -348,3 +348,30 @@ h3{font-size:clamp(1.15rem,1.8vw,1.4rem)}
 }
 .areas span:hover{border-color:var(--gold);color:var(--gold)}
 @media (max-width:780px){.areas{grid-template-columns:repeat(2,1fr)}}
+
+/* === New components: skip link, hero chips, testimonials, price table === */
+.skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:#fff;padding:10px 16px;z-index:9999;border-radius:0 0 8px 0}
+.skip:focus{left:0}
+
+.hero__chips{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.hero__chips li{font-size:.85rem;background:var(--surface);border:1px solid rgba(184,136,74,.18);color:#3a3530;padding:8px 14px;border-radius:999px;font-weight:600}
+
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:14px}
+.quote{background:var(--surface);border:1px solid rgba(184,136,74,.14);border-radius:18px;padding:26px;margin:0;position:relative;transition:transform .3s ease,box-shadow .3s ease}
+.quote:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(0,0,0,.18)}
+.quote::before{content:"\201D";position:absolute;top:6px;left:18px;font-size:5rem;color:var(--gold);opacity:.25;font-family:Georgia,serif;line-height:1}
+.quote blockquote{margin:0 0 18px;font-size:1.02rem;line-height:1.75;color:#2a2520}
+.quote figcaption{display:flex;flex-direction:column;gap:2px;border-top:1px solid rgba(184,136,74,.18);padding-top:14px}
+.quote figcaption b{color:var(--ink);font-weight:800}
+.quote figcaption span{color:var(--mute);font-size:.85rem}
+@media (max-width:860px){.testimonials{grid-template-columns:1fr}}
+
+.price-table{background:var(--surface);border:1px solid rgba(184,136,74,.18);border-radius:20px;padding:8px;overflow:hidden}
+.price-table table{width:100%;border-collapse:collapse}
+.price-table th,.price-table td{padding:16px 20px;text-align:right}
+.price-table th{background:rgba(184,136,74,.08);color:var(--ink);font-weight:800;font-size:.95rem}
+.price-table tbody tr{border-top:1px solid rgba(184,136,74,.1)}
+.price-table tbody tr:hover{background:rgba(184,136,74,.04)}
+.price-table td b{color:var(--gold);font-weight:800}
+.price-note{margin:14px 6px 6px;font-size:.82rem;color:var(--mute)}
+@media (max-width:560px){.price-table th,.price-table td{padding:12px 14px;font-size:.9rem}}
