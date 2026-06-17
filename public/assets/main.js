@@ -39,7 +39,7 @@ form?.addEventListener('submit', (e) => {
 الخدمة: ${service}
 المنطقة: ${area}
 التفاصيل: ${note}`;
-  window.open(`https://wa.me/96565954080?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open(`https://wa.me/96594944683?text=${encodeURIComponent(msg)}`, '_blank');
 });
 
 // === Counter (data-count) ===
