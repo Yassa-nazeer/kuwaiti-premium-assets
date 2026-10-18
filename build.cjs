@@ -2,9 +2,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const PHONE_DISPLAY = '9494 4683';
-const PHONE_TEL = '96594944683';
-const WA = '96594944683';
+const PHONE_DISPLAY = '6061 8841';
+const PHONE_TEL = '96560618841';
+const WA = '96560618841';
 const BRAND = 'الكويت لشراء المستعمل';
 const TAGLINE = 'منصة كويتية موثوقة لشراء المكيفات والأثاث والأجهزة والألمنيوم والخردة';
 
