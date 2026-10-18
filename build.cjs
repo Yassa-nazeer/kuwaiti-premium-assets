@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const PHONE_DISPLAY = '6061 8841';
+const PHONE_DISPLAY = '60618841';
 const PHONE_TEL = '96560618841';
 const WA = '96560618841';
 const BRAND = 'الكويت لشراء المستعمل';
@@ -82,7 +82,7 @@ const footer = `
       <div>
         <div class="brand" style="color:#fff;margin-bottom:16px"><span class="brand__mark"><span>ك</span></span> ${BRAND}</div>
         <p style="font-size:.9rem;color:#9a948a;max-width:32ch">${TAGLINE}. خدمة 24/7، أسعار يومية محدّثة، تقييم مجاني فوري، ودفع نقدي.</p>
-        <p style="margin-top:14px"><a href="tel:+${PHONE_TEL}" style="color:var(--gold);font-weight:800;font-size:1.05rem">📞 +965 ${PHONE_DISPLAY}</a></p>
+        <p style="margin-top:14px"><a href="tel:+${PHONE_TEL}" style="color:var(--gold);font-weight:800;font-size:1.05rem">📞 <span dir="ltr"><span dir="ltr">+965 ${PHONE_DISPLAY}</span></span></a></p>
       </div>
       <div>
         <h4>خدماتنا</h4>
@@ -108,7 +108,7 @@ const footer = `
       <div>
         <h4>تواصل مباشر</h4>
         <ul>
-          <li><a href="tel:+${PHONE_TEL}">📞 +965 ${PHONE_DISPLAY}</a></li>
+          <li><a href="tel:+${PHONE_TEL}">📞 <span dir="ltr"><span dir="ltr">+965 ${PHONE_DISPLAY}</span></span></a></li>
           <li><a href="https://wa.me/${WA}">💬 واتساب فوري</a></li>
           <li>🕐 خدمة 24 ساعة طوال الأسبوع</li>
           <li>📍 جميع محافظات الكويت الست</li>
@@ -151,7 +151,7 @@ const tile = (s) => `
 </a>`;
 
 // =================== INDEX ===================
-const indexHTML = head('الرئيسية', `${TAGLINE} — شراء فوري بأعلى الأسعار في الكويت. اتصل +965 ${PHONE_DISPLAY}.`, 'index.html', 'شراء مكيفات مستعملة, شراء اثاث مستعمل, شراء اجهزة, خردة, نقل عفش, الكويت') + `
+const indexHTML = head('الرئيسية', `${TAGLINE} — شراء فوري بأعلى الأسعار في الكويت. اتصل ${PHONE_DISPLAY}.`, 'index.html', 'شراء مكيفات مستعملة, شراء اثاث مستعمل, شراء اجهزة, خردة, نقل عفش, الكويت') + `
 <main id="main">
 <section class="hero">
   <div class="container">
@@ -502,7 +502,7 @@ const contactHTML = head('اتصل بنا', `تواصل مع فريق الكوي
 
     <div class="contact">
       <div class="contact__info reveal">
-        <div class="contact__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg><div><b>اتصل بنا مباشرة</b><a href="tel:+${PHONE_TEL}" style="color:var(--gold);font-weight:800;font-size:1.15rem">+965 ${PHONE_DISPLAY}</a><br><span>24 ساعة طوال أيام الأسبوع</span></div></div>
+        <div class="contact__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg><div><b>اتصل بنا مباشرة</b><a href="tel:+${PHONE_TEL}" style="color:var(--gold);font-weight:800;font-size:1.15rem"><span dir="ltr">+965 ${PHONE_DISPLAY}</span></a><br><span>24 ساعة طوال أيام الأسبوع</span></div></div>
         <div class="contact__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg><div><b>واتساب فوري</b><a href="https://wa.me/${WA}" style="color:var(--gold);font-weight:800">راسلنا الآن</a><br><span>رد خلال دقائق معدودة</span></div></div>
         <div class="contact__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><div><b>مناطق العمل</b><span>جميع محافظات الكويت الست بدون استثناء</span></div></div>
         <div class="contact__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div><b>أوقات العمل</b><span>24 ساعة / 7 أيام في الأسبوع</span></div></div>
@@ -616,7 +616,7 @@ cd site && npx vercel --prod
 - \`netlify.toml\`, \`vercel.json\` — إعدادات النشر
 
 ## الاتصال
-+965 ${PHONE_DISPLAY}
++96560618841
 `);
 
 console.log('✓ Built', 6 + SERVICES.length, 'pages → public/ + site/');
