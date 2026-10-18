@@ -25,4 +25,4 @@ cd site && npx vercel --prod
 - `netlify.toml`, `vercel.json` — إعدادات النشر
 
 ## الاتصال
-+965 9494 4683
++965 6061 8841
